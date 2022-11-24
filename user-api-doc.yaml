@@ -1,0 +1,73 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8091
+  description: Generated server url
+paths:
+  /user:
+    post:
+      tags:
+      - user-controller
+      operationId: registerNewUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserDto'
+  /user/{id}:
+    get:
+      tags:
+      - user-controller
+      operationId: getUser
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserDto'
+components:
+  schemas:
+    UserDto:
+      required:
+      - birthdate
+      - country
+      - username
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          maxLength: 2147483647
+          minLength: 2
+          type: string
+        birthdate:
+          type: string
+          format: date
+        country:
+          type: string
+        phone:
+          type: string
+        gender:
+          type: string
+          enum:
+          - MALE
+          - FEMALE

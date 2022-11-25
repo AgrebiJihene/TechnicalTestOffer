@@ -5,7 +5,7 @@ This project implemented in Spring boot is a REST API that exposes 2 services:
 - The second allows to display the details of a subscribed user
 ### Architecture 
 The project contains several layers:
--	**Domain**: It represents data and can be persisted to database (h2).
+-	**Domain**: It represents data and can be persisted to database (H2: accessible via this link: http://localhost:8091/h2-console).
 -	**DTO**: *Data Transfer Object* is used to transfer data from one processor context to another. It’s like a copy of the entity. The conversion of the entity (User) to a UserDto (mapping) is done thanks to the library mapstruct.
 -	**Repositories**: It is the layer that deals with CRUD operations.
 -	**Services**: It provides some services. Its utility is to make business logic.
